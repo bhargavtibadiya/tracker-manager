@@ -7,6 +7,58 @@ Versioning follows [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ---
 
+## [1.0.14] — 2026-06-27
+
+**Author:** Bhargav Tibadiya
+
+### Changed
+
+- **Rebrand from InternalX to AutoX**
+  - Updated product name, `appId`, copyright, installer shortcuts, and DMG title
+    in `package.json` and Electron build config.
+  - Renamed `APP_NAME`, tray labels, activity-log export filename, Windows
+    `AppUserModelID`, and accessibility prompts across the Electron shell.
+  - Renamed theme `localStorage` key to `AutoX-theme` — `src/hooks/useTheme.ts`.
+  - Updated Python automation scripts, README, docs, and historical changelog
+    references to use the **AutoX** brand consistently.
+
+- **Footer typography enlarged**
+  - Increased app name, version, and status indicator sizes in the footer for
+    better readability.
+  - — `src/App.tsx`
+
+### Build
+
+- Version bumped to `1.0.14` in `package.json` and `src/constants/app.constants.ts`.
+
+---
+
+## [1.0.14] — 2026-06-27
+
+**Author:** Bhargav Tibadiya
+
+### Changed
+
+- **Rebrand from InternalX to AutoX**
+  - Updated product name, `appId`, copyright, installer shortcuts, and DMG title
+    in `package.json` and Electron build config.
+  - Renamed `APP_NAME`, tray labels, activity-log export filename, Windows
+    `AppUserModelID`, and accessibility prompts across the Electron shell.
+  - Renamed theme `localStorage` key to `AutoX-theme` — `src/hooks/useTheme.ts`.
+  - Updated Python automation scripts, README, docs, and historical changelog
+    references to use the **AutoX** brand consistently.
+
+- **Footer typography enlarged**
+  - Increased app name, version, and status indicator sizes in the footer for
+    better readability.
+  - — `src/App.tsx`
+
+### Build
+
+- Version bumped to `1.0.14` in `package.json` and `src/constants/app.constants.ts`.
+
+---
+
 ## [1.0.13] — 2026-06-26
 
 **Author:** Bhargav Tibadiya
