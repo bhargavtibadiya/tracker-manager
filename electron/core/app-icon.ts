@@ -124,7 +124,7 @@ export function getAppIconPath(): string | null {
   return cachedIconPath
 }
 
-/** Returns the InternalX window/taskbar/dock icon. */
+/** Returns the AutoX window/taskbar/dock icon. */
 export function getAppIcon(): NativeImage {
   if (!cachedAppIcon || cachedAppIcon.isEmpty()) {
     const iconPath = getAppIconPath()

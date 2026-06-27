@@ -2,7 +2,7 @@
 // CONSTANTS
 // ============================================================================
 
-export const APP_NAME = 'InternalX'
+export const APP_NAME = 'AutoX'
 
 export const APP_VERSION = 'v1.0.13'
 

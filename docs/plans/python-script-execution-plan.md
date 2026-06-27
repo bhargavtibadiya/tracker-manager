@@ -1,6 +1,6 @@
 # Python Script Execution — Implementation Plan
 
-**Project:** InternalX (Automation Control Application)  
+**Project:** AutoX (Automation Control Application)  
 **Version:** 1.0  
 **Status:** Planning  
 **Audience:** Internal Development Team  
@@ -33,7 +33,7 @@
 
 | # | Goal |
 |---|---|
-| G1 | Team members start/stop automation from the InternalX UI — no manual terminal commands. |
+| G1 | Team members start/stop automation from the AutoX UI — no manual terminal commands. |
 | G2 | Electron owns the full lifecycle: countdown, timer, stop, post-stop actions, logging, and voice feedback. |
 | G3 | Python scripts only simulate keyboard/mouse activity in a loop until Electron terminates them. |
 | G4 | Two modes (Basic / Advanced) map to separate, maintainable scripts with shared utilities. |
@@ -501,7 +501,7 @@ d:\Projects\auto-evetns\scripts\
 └── lib/          (optional shared code)
 ```
 
-This is the canonical location for InternalX automation scripts in development and should be copied/bundled into the Electron app at build time for production.
+This is the canonical location for AutoX automation scripts in development and should be copied/bundled into the Electron app at build time for production.
 
 ---
 

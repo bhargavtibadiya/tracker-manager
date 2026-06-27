@@ -1,5 +1,5 @@
 """
-InternalX — Basic Automation Mode
+AutoX — Basic Automation Mode
 
 Simulates browser/editor activity using keyboard shortcuts and scroll.
 No Alt+Tab — only in-app navigation.
@@ -21,7 +21,7 @@ from lib import actions, signals
 
 # ── CLI args ──────────────────────────────────────────────────────────────────
 
-parser = argparse.ArgumentParser(description='InternalX — basic automation script')
+parser = argparse.ArgumentParser(description='AutoX — basic automation script')
 parser.add_argument('--mode', default='basic', choices=['basic', 'advanced'])
 parser.add_argument('--duration', type=int, default=0,
                     help='Total duration in seconds (0 = indefinite). Informational only.')

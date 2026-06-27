@@ -17,7 +17,7 @@ import time
 
 # ── Argument parsing ──────────────────────────────────────────────────────────
 
-parser = argparse.ArgumentParser(description="InternalX Phase-1 ping script")
+parser = argparse.ArgumentParser(description="AutoX Phase-1 ping script")
 parser.add_argument("--mode", default="basic", choices=["basic", "advanced"])
 parser.add_argument("--duration", type=int, default=0)
 parser.add_argument("--shutdown", default="false")

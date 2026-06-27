@@ -1,4 +1,4 @@
-# InternalX — Test Cases
+# AutoX — Test Cases
 
 > Mark each case `[x]` when verified. Leave `[ ]` until tested.
 
@@ -7,7 +7,7 @@
 ## 1. App Launch & Window
 
 - [ ] App opens at max-width 650 px and is centred on screen
-- [ ] Window title shows "InternalX"
+- [ ] Window title shows "AutoX"
 - [ ] App cannot be resized wider than 650 px
 - [ ] App starts with status badge showing **Stopped**
 - [ ] Activity Log panel is hidden by default
@@ -129,7 +129,7 @@
 - [ ] Tray icon shows **red Power-off** icon when stopped
 - [ ] Tray icon updates to **green Power** icon immediately when automation starts
 - [ ] Tray icon updates back to **red** immediately when automation stops
-- [ ] Tooltip shows "InternalX — Running" / "InternalX — Stopped"
+- [ ] Tooltip shows "AutoX — Running" / "AutoX — Stopped"
 - [ ] Context menu shows correct status label (● Running / ○ Stopped)
 - [ ] **Start Automation** is greyed out when running
 - [ ] **Stop Automation** is greyed out when stopped

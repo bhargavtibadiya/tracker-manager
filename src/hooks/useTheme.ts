@@ -14,7 +14,7 @@ export type ThemeMode = 'light' | 'dark'
 // CONSTANTS
 // ============================================================================
 
-const STORAGE_KEY = 'internalx-theme'
+const STORAGE_KEY = 'AutoX-theme'
 const DEFAULT_THEME_MODE: ThemeMode = 'light'
 
 // ============================================================================
@@ -49,7 +49,7 @@ const applyDarkClass = (isDark: boolean): void => {
  * Manages the app's colour-scheme mode (light or dark only).
  *
  * Default is light. The chosen mode is persisted in localStorage under
- * `internalx-theme`. The hook applies the `dark` class to `document.documentElement`
+ * `AutoX-theme`. The hook applies the `dark` class to `document.documentElement`
  * so Tailwind's `class` dark-mode strategy and CSS-variable overrides take effect.
  */
 const useTheme = () => {

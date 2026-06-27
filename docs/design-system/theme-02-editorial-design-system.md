@@ -1,4 +1,5 @@
 # Editorial — Complete Design System
+>
 > Version 1.0 · Derived from Theme 02: EDITORIAL
 
 ---
@@ -31,6 +32,7 @@
 **Best Suited For:** Publishing platforms, editorial content tools, literary journals, content management systems, cultural institutions, premium blog platforms, media companies, academic publishing
 
 **Core Principles:**
+
 - Cream warmth over clinical white — background `#faf7f2`, not pure white
 - Burgundy as the single prestige accent — deep, serious, not corporate
 - Cormorant Garamond for all display headlines — the editorial serif
@@ -266,6 +268,7 @@ Paste this block into the `:root` of every project using this system.
 ### 4.1 Font Families
 
 **Display / Headings — `'Cormorant Garamond'`**
+
 - Google Fonts import: `@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,400&display=swap')`
 - Fallback: `'Palatino Linotype', Georgia, serif`
 - Weights used: 300 (Light), 400 (Regular), 400 Italic, 600 (SemiBold)
@@ -273,6 +276,7 @@ Paste this block into the `:root` of every project using this system.
 - Usage: All page and section titles H1–H3, display hero text, editorial pull quotes
 
 **Body / UI — `'Syne'`**
+
 - Google Fonts import: `@import url('https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&display=swap')`
 - Fallback: `'Segoe UI', system-ui, sans-serif`
 - Weights used: 400 (Regular), 600 (SemiBold), 700 (Bold), 800 (ExtraBold)
@@ -417,6 +421,7 @@ label {
 ### 5.2 Component Spacing Specifications
 
 #### Modal
+
 ```
 padding-all:         32px  (--space-16)
 eyebrow-to-title:     12px
@@ -430,6 +435,7 @@ button-gap:          12px
 ```
 
 #### Card
+
 ```
 padding-all:          24px  (--space-12)
 inner-section-gap:    20px
@@ -437,6 +443,7 @@ border-radius:         4px  (--radius-sm)
 ```
 
 #### Button
+
 ```
 height-base:          40px
 height-small:         34px
@@ -450,6 +457,7 @@ letter-spacing:       0.08em  (uppercase tracking)
 ```
 
 #### Input / Textarea
+
 ```
 padding-v:            10px
 padding-h:            14px
@@ -459,6 +467,7 @@ min-height-textarea:  80px
 ```
 
 #### Table
+
 ```
 cell-padding-v:       12px
 cell-padding-h:       16px
@@ -467,6 +476,7 @@ border-bottom-header: 2px solid var(--color-primary)  /* Burgundy underline */
 ```
 
 #### Badge
+
 ```
 padding-v:             3px
 padding-h:            10px
@@ -480,7 +490,7 @@ letter-spacing:       0.06em
 ## 6. Border Radius System
 
 | Token | Value | Where Used |
-|-------|-------|-----------| 
+|-------|-------|-----------|
 | `--radius-none` | 0px | Horizontal rules, table cells, accent lines |
 | `--radius-xs` | 2px | Inner sub-elements only |
 | `--radius-sm` | 4px | **PRIMARY** — all buttons, inputs, badges, cards, modals, dropdowns |
@@ -488,6 +498,7 @@ letter-spacing:       0.06em
 | `--radius-full` | 9999px | Status indicator pills only |
 
 **Radius Budget Rules:**
+
 - Default to `--radius-sm` (4px) for all interactive elements and containers
 - 4px is the universal value — it provides the minimal softening without losing editorial gravity
 - Never use `--radius-md` on interactive elements
@@ -532,6 +543,7 @@ All shadows use `rgba(44, 24, 16, opacity)` — the warm dark brown from the tex
 ### 8.1 Buttons
 
 #### Primary Button
+
 ```css
 .btn-primary {
   font-family: var(--font-body);
@@ -554,6 +566,7 @@ All shadows use `rgba(44, 24, 16, opacity)` — the warm dark brown from the tex
 ```
 
 #### Secondary / Outline Button
+
 ```css
 .btn-secondary {
   font-family: var(--font-body);
@@ -573,6 +586,7 @@ All shadows use `rgba(44, 24, 16, opacity)` — the warm dark brown from the tex
 ```
 
 #### Ghost Button
+
 ```css
 .btn-ghost {
   font-family: var(--font-body);
@@ -909,11 +923,12 @@ Tailwind:   bg-editorial-base → background: var(--color-bg-base) → auto-swit
 ```
 
 The `useTheme` hook in `src/hooks/useTheme.ts` manages three modes:
+
 - **`system`** — follows `prefers-color-scheme` OS/browser setting (default)
 - **`light`** — forces light regardless of system
 - **`dark`** — forces dark regardless of system
 
-The selected mode is persisted in `localStorage` under the key `internalx-theme`.
+The selected mode is persisted in `localStorage` under the key `AutoX-theme`.
 
 ---
 

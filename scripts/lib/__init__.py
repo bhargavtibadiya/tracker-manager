@@ -1,1 +1,1 @@
-# InternalX shared Python automation utilities
+# AutoX shared Python automation utilities

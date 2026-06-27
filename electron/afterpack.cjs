@@ -1,5 +1,5 @@
 /**
- * electron-builder afterPack hook — embed InternalX icon into the Windows EXE.
+ * electron-builder afterPack hook — embed AutoX icon into the Windows EXE.
  *
  * signAndEditExecutable:false skips electron-builder's own rcedit step (avoids
  * the winCodeSign symlink error without Developer Mode). This hook applies the
@@ -9,7 +9,7 @@
 'use strict'
 
 const path = require('path')
-const fs   = require('fs')
+const fs = require('fs')
 
 /**
  * @param {import('electron-builder').AfterPackContext} context
@@ -18,9 +18,9 @@ exports.default = async function afterPack(context) {
   if (context.electronPlatformName !== 'win32') return
 
   const productName = context.packager.appInfo.productName
-  const version     = context.packager.appInfo.version
-  const exeName     = `${productName}.exe`
-  const exePath     = path.join(context.appOutDir, exeName)
+  const version = context.packager.appInfo.version
+  const exeName = `${productName}.exe`
+  const exePath = path.join(context.appOutDir, exeName)
 
   if (!fs.existsSync(exePath)) {
     console.warn(`[afterPack] EXE not found at ${exePath} — skipping`)

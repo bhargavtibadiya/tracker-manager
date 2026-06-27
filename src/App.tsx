@@ -894,16 +894,16 @@ const App = () => {
         {/* Footer */}
         <footer className="flex-shrink-0 flex items-center justify-between px-4 sm:px-5 py-2 border-t border-editorial-border bg-editorial-base">
           <div className="flex items-center gap-1.5">
-            <ShieldCheck size={11} className="text-editorial-muted" strokeWidth={2} />
-            <span className="font-body text-[12px] text-editorial-muted">
+            <ShieldCheck size={14} className="text-editorial-muted" strokeWidth={2} />
+            <span className="font-body text-[14px] text-editorial-muted">
               {APP_NAME}
             </span>
           </div>
           <div className="flex items-center gap-3">
-            <span className="font-body text-[10px] text-editorial-disabled">{APP_VERSION}</span>
+            <span className="font-body text-[14px] text-editorial-disabled">{APP_VERSION}</span>
             <div className="flex items-center gap-1.5">
-              <span className={cn('w-1.5 h-1.5 rounded-full flex-shrink-0', footerStatus.color)} />
-              <span className="font-body text-[10px] text-editorial-muted">{footerStatus.label}</span>
+              <span className={cn('w-2 h-2 rounded-full flex-shrink-0', footerStatus.color)} />
+              <span className="font-body text-[12px] text-editorial-muted">{footerStatus.label}</span>
             </div>
           </div>
         </footer>

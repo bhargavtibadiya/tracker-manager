@@ -149,7 +149,7 @@ Both files must exist before running a packaged build.
 Without the permission the script will start but **all actions are silently blocked**.
 
 1. Open **System Settings → Privacy & Security → Accessibility**
-2. Click the **+** button and add **InternalX** (or your terminal in dev mode)
+2. Click the **+** button and add **AutoX** (or your terminal in dev mode)
 3. Restart the app after granting permission
 
 The app logs a `WARN` entry if the permission is missing when automation starts.

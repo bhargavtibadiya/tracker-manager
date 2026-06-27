@@ -1,6 +1,6 @@
 # Changelog
 
-All notable changes to **InternalX** are documented here.
+All notable changes to **AutoX** are documented here.
 
 Format follows [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).  
 Versioning follows [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
@@ -114,7 +114,7 @@ Versioning follows [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 ### Changed
 
 - **Tray icon hover label shows pending time while running**
-  - Replaced `InternalX — Running` / `InternalX — Stopped` with a status-first
+  - Replaced `AutoX — Running` / `AutoX — Stopped` with a status-first
     label: `Running - 2h 15m Pending` when a timer is set,
     `Running - No limit` when no timer is configured, and `Stopped` when idle.
   - The renderer syncs `remainingSeconds` to the main process over IPC so the
@@ -177,7 +177,7 @@ Versioning follows [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 - **Dark / Light mode with system preference support**
   - New `useTheme` hook (`src/hooks/useTheme.ts`) manages three modes:
     `system` (follows OS preference), `light`, and `dark`.
-  - The chosen mode is persisted in `localStorage` under `internalx-theme`.
+  - The chosen mode is persisted in `localStorage` under `AutoX-theme`.
   - The hook applies the `dark` class to `<html>` — Tailwind's `class` dark
     strategy — so all `editorial-*` CSS-variable tokens automatically swap
     without per-element `dark:` prefixes.
@@ -224,7 +224,7 @@ Versioning follows [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 - **Tray icon: real app icon composited on status-coloured background**
   - The tray now uses **raw BGRA bitmap compositing** (not SVG-embedded PNG)
-    to reliably show the InternalX app icon on a status-coloured rounded
+    to reliably show the AutoX app icon on a status-coloured rounded
     background: **green** (`#2d6a4f`) when running, **red** (`#9b2335`)
     when stopped.
   - Previous SVG + embedded base64-PNG approach failed silently in the
@@ -341,7 +341,7 @@ Versioning follows [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ### Build
 
-- Windows installer: `release/InternalX-Setup-1.0.4.exe`
+- Windows installer: `release/AutoX-Setup-1.0.4.exe`
 
 ---
 
@@ -362,7 +362,7 @@ Versioning follows [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ### Build
 
-- Windows installer: `release/InternalX-Setup-1.0.3.exe`
+- Windows installer: `release/AutoX-Setup-1.0.3.exe`
 
 ---
 
@@ -402,7 +402,7 @@ Versioning follows [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ### Build
 
-- Windows installer: `release/InternalX-Setup-1.0.2.exe`
+- Windows installer: `release/AutoX-Setup-1.0.2.exe`
 
 ---
 
@@ -442,7 +442,7 @@ Versioning follows [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ### Build
 
-- Windows installer: `release/InternalX-Setup-1.0.1.exe`
+- Windows installer: `release/AutoX-Setup-1.0.1.exe`
 
 ---
 
@@ -452,7 +452,7 @@ Versioning follows [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ### Added
 
-- Initial release of **InternalX** desktop automation app.
+- Initial release of **AutoX** desktop automation app.
 - Electron 33 shell with React + Tailwind UI.
 - **Basic mode** — `Ctrl+Tab`, scroll, arrow keys, page up/down (no app switching).
 - **Advanced mode** — all Basic actions + application switching.
@@ -466,5 +466,5 @@ Versioning follows [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ### Build
 
-- Windows installer: `InternalX-Setup-1.0.0.exe` (NSIS, x64).
-- macOS disk image: `InternalX-1.0.0.dmg` (must be built on macOS).
+- Windows installer: `AutoX-Setup-1.0.0.exe` (NSIS, x64).
+- macOS disk image: `AutoX-1.0.0.dmg` (must be built on macOS).

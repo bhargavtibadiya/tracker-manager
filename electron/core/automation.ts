@@ -54,7 +54,7 @@ function warnIfAccessibilityNotGranted(onLog: LogCallback): void {
       const entry =
         'WARN — macOS Accessibility permission not granted. ' +
         'Keyboard/mouse simulation may be blocked. ' +
-        'Open System Settings → Privacy & Security → Accessibility and enable InternalX.'
+        'Open System Settings → Privacy & Security → Accessibility and enable AutoX.'
       writeLog(entry)
       onLog(entry)
       devLog('WARN', entry)

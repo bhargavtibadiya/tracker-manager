@@ -1,5 +1,5 @@
 """
-Signal handling for InternalX automation scripts.
+Signal handling for AutoX automation scripts.
 
 Registers SIGTERM, SIGINT, and (on Windows) SIGBREAK handlers so the
 process exits cleanly when Electron sends a kill signal.  On Windows

@@ -9,7 +9,7 @@ import { app } from 'electron'
 // ============================================================================
 
 /**
- * Register InternalX in the OS startup registry so it launches at login.
+ * Register AutoX in the OS startup registry so it launches at login.
  *
  * Skipped in development (VITE_DEV_SERVER_URL is set) to avoid registering
  * the dev build binary.  In production the packaged .exe path is used.

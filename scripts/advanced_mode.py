@@ -1,5 +1,5 @@
 """
-InternalX — Advanced Automation Mode
+AutoX — Advanced Automation Mode
 
 Simulates full desktop activity including application switching.
 Wider timing variance and more frequent/longer idle windows make the
@@ -22,7 +22,7 @@ from lib import actions, signals
 
 # ── CLI args ──────────────────────────────────────────────────────────────────
 
-parser = argparse.ArgumentParser(description='InternalX — advanced automation script')
+parser = argparse.ArgumentParser(description='AutoX — advanced automation script')
 parser.add_argument('--mode', default='advanced', choices=['basic', 'advanced'])
 parser.add_argument('--duration', type=int, default=0,
                     help='Total duration in seconds (0 = indefinite). Informational only.')

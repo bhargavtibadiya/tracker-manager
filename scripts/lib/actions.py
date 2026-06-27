@@ -1,5 +1,5 @@
 """
-Shared action library for InternalX automation scripts.
+Shared action library for AutoX automation scripts.
 
 All pyautogui calls are wrapped in safe_action() so a single failing
 call never crashes the main loop.  sleep_interruptible() checks the

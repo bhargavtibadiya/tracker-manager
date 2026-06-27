@@ -1,6 +1,6 @@
-# InternalX
+# AutoX
 
-**InternalX** is a cross-platform desktop app for starting, stopping, and managing keyboard/mouse automation scripts. It runs in the system tray, supports timed or indefinite sessions, and handles post-stop actions such as closing the Upwork desktop app or shutting down the system.
+**AutoX** is a cross-platform desktop app for starting, stopping, and managing keyboard/mouse automation scripts. It runs in the system tray, supports timed or indefinite sessions, and handles post-stop actions such as closing the Upwork desktop app or shutting down the system.
 
 Built with **Electron**, **React**, **TypeScript**, and **Python** (`pyautogui`).
 
@@ -77,8 +77,8 @@ Output is written to `release/`:
 
 | Platform | Artifact |
 |----------|----------|
-| Windows | `release/InternalX-Setup-<version>.exe` |
-| macOS | `release/InternalX-<version>.dmg` |
+| Windows | `release/AutoX-Setup-<version>.exe` |
+| macOS | `release/AutoX-<version>.dmg` |
 
 ### Releasing a new version
 
@@ -107,7 +107,7 @@ Output is written to `release/`:
 ## Project structure
 
 ```
-InternalX-Auto/
+AutoX-Auto/
 ├── electron/              # Electron main process
 │   ├── main.ts            # App entry, window, lifecycle
 │   ├── preload.ts         # IPC bridge (contextBridge)

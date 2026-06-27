@@ -1,4 +1,5 @@
 # Editorial — Construction Instructions & AI Prompting Guide
+>
 > Version 1.0 · Complete decision framework for building with the Editorial system
 
 ---
@@ -151,12 +152,14 @@ Default to Syne
 5. **Secondary button border and text** — outline style
 
 **Allowed sparingly:**
+
 - Active nav item indicator
 - Active tab underline
 - Link color (primary anchor)
 - Selected card border
 
 **Never:**
+
 - Burgundy backgrounds on full sections
 - Burgundy on body copy (only for interactive elements and headings)
 - Multiple burgundy sections per viewport
@@ -166,7 +169,7 @@ Default to Syne
 ### 3.3 Text Color Assignment
 
 | Priority | Color | Examples |
-|----------|-------|---------| 
+|----------|-------|---------|
 | Highest | `#2c1810` | All serif headings, modal titles, key values |
 | High | `#5e4a3e` | Body copy, descriptions, secondary info |
 | Medium | `#8c7b6e` | Labels, eyebrows, captions, meta text |
@@ -436,6 +439,7 @@ Two buttons: `gap: 12px`. Cancel `flex:1`, Submit `flex:2`.
 `rgba(250, 247, 242, 0.90)` + `blur(4px)`
 
 **Step 2: Container**
+
 - Background: `#ffffff`
 - Border: none
 - Border-radius: `4px`
@@ -444,33 +448,40 @@ Two buttons: `gap: 12px`. Cancel `flex:1`, Submit `flex:2`.
 - Box-shadow: `0 8px 24px rgba(44,24,16,0.10)`
 
 **Step 3: Header row**
+
 - Left: Syne eyebrow text (10px, uppercase, tracking 0.18em, muted)
 - Right: close × button (no background)
 
 **Step 4: Title**
+
 - Cormorant Garamond, `1.5rem`, weight 300
 - Color: `#2c1810`
 - Margin-bottom: `12px`
 
 **Step 5: Horizontal rule**
+
 - `border-top: 1px solid #e8e0d5`
 - Margin: `0 0 10px`
 
 **Step 6: Description**
+
 - Syne, `15px`, weight 400
 - Color: `#5e4a3e`
 - Line-height: `1.7`
 
 **Step 7: Field label**
+
 - Syne, `11px`, uppercase, tracking `0.10em`
 - Color: `#8c7b6e`
 - Margin-bottom: `6px`
 
 **Step 8: Input/Textarea**
+
 - `border: 1.5px solid #e8e0d5`, `border-radius: 4px`
 - Focus: `border-color: #7b2d3b` + soft glow `0 0 0 3px rgba(123,45,59,0.10)`
 
 **Step 9: Buttons**
+
 - Cancel: ghost style (transparent bg, `#e8e0d5` border, `#8c7b6e` text)
 - Submit: burgundy bg, white text, uppercase, Syne 600
 - Gap: `12px`
@@ -480,21 +491,25 @@ Two buttons: `gap: 12px`. Cancel `flex:1`, Submit `flex:2`.
 ### 10.2 How to Build a Data Table — Step by Step
 
 **Step 1: Table**
+
 - `border-collapse: collapse`
 - Font-family: Syne
 
 **Step 2: Header row**
+
 - No background color
 - Column text: `color: #7b2d3b` (burgundy)
 - `border-bottom: 2px solid #7b2d3b`
 - Font: Syne, 10px, uppercase, tracking 0.12em, weight 700
 
 **Step 3: Body rows**
+
 - Cell text: Syne, 14px, `#5e4a3e`
 - Row divider: `1px solid #e8e0d5`
 - Padding: `12px 16px`
 
 **Step 4: Row hover**
+
 - Background: `#f4ede3`
 - Transition: `100ms`
 
@@ -540,6 +555,7 @@ button:active { transform: scale(0.98); transition: transform 50ms; }
 ```css
 .disabled { opacity: 0.4; cursor: not-allowed; pointer-events: none; }
 ```
+
 Inputs: add `background: #f4ede3`.
 
 ---
@@ -585,6 +601,7 @@ Only animate: `transform`, `opacity`, `background-color`, `border-color`, `box-s
 ## 14. What Never to Do — Anti-Pattern List
 
 ### Typography Anti-Patterns
+
 - ❌ Syne for H1–H3 headlines (Cormorant only)
 - ❌ Non-italic Cormorant for H3 editorial subheads (italic is the editorial signal)
 - ❌ Lowercase Syne button labels (always uppercase)
@@ -592,6 +609,7 @@ Only animate: `transform`, `opacity`, `background-color`, `border-color`, `box-s
 - ❌ Missing uppercase tracking on Syne labels (always add letter-spacing)
 
 ### Color Anti-Patterns
+
 - ❌ Pure white `#ffffff` for the page background
 - ❌ Burgundy on body copy text (not a text color, only for interactive elements)
 - ❌ Using black `#000000` for anything (always use warm `#2c1810`)
@@ -599,23 +617,27 @@ Only animate: `transform`, `opacity`, `background-color`, `border-color`, `box-s
 - ❌ Adding a second accent color alongside burgundy
 
 ### Shape Anti-Patterns
+
 - ❌ 0px border-radius on buttons or inputs (this is not the Sharp system)
 - ❌ 8px or higher border-radius on any element
 - ❌ Pill-shaped buttons (`border-radius: 9999px`)
 - ❌ Mixed radius values on the same component
 
 ### Shadow Anti-Patterns
+
 - ❌ Hard-edge offset shadows (that's the Sharp system)
 - ❌ Black shadow colors
 - ❌ No shadow on floating elements (dropdowns, modals)
 
 ### Table Anti-Patterns
+
 - ❌ Dark-fill inverted table headers (that's Sharp)
 - ❌ Missing burgundy underline on table headers
 - ❌ Non-uppercase column labels
 - ❌ Regular-weight column labels (must be 700)
 
 ### Spacing Anti-Patterns
+
 - ❌ Missing letter-spacing on uppercase Syne
 - ❌ No gap between label and input (minimum 6px)
 - ❌ Button group gap below 12px
@@ -644,6 +666,7 @@ You are building using the Editorial design system. Key rules:
 ### 15.2 Component Prompt Templates
 
 **For a new form:**
+
 ```
 Build a [form name] using the Editorial design system.
 - Container: padding 32px, border-radius 4px, bg #faf7f2 or #ffffff, shadow 0 8px 24px rgba(44,24,16,0.10)
@@ -655,6 +678,7 @@ Build a [form name] using the Editorial design system.
 ```
 
 **For a data table:**
+
 ```
 Build a data table using the Editorial design system.
 - Table: border-collapse collapse, Syne font
@@ -670,12 +694,14 @@ Build a data table using the Editorial design system.
 ### 15.3 Debugging Prompts
 
 **If headlines are not serif:**
+
 ```
 Change all H1–H3 to font-family: 'Cormorant Garamond', serif; weight 300 or 400; line-height 1.0–1.2.
 Syne should only be used for body, labels, buttons, and UI elements.
 ```
 
 **If table headers are dark-filled:**
+
 ```
 Remove the dark background from table headers.
 Apply: color #7b2d3b (burgundy) + border-bottom 2px solid #7b2d3b.
@@ -683,11 +709,13 @@ The header cells should have the same background as the surface.
 ```
 
 **If shadows are cold/grey:**
+
 ```
 Change all shadow rgba values from (0,0,0,...) to rgba(44, 24, 16, ...) — warm brown family.
 ```
 
 **If button labels are not uppercase:**
+
 ```
 Add text-transform: uppercase and letter-spacing: 0.08em to all button labels.
 Font: Syne, weight 600.
@@ -698,6 +726,7 @@ Font: Syne, weight 600.
 ## 16. New Project Checklist
 
 ### Setup Phase
+
 - [ ] Google Fonts: Cormorant Garamond + Syne imported
 - [ ] Body background: `#faf7f2`
 - [ ] Body font: Syne, weight 400
@@ -708,6 +737,7 @@ Font: Syne, weight 600.
 - [ ] Base button: uppercase Syne, `border-radius: 4px`
 
 ### Component Phase
+
 - [ ] Cormorant for all display headings only
 - [ ] Syne for all body, labels, buttons, nav
 - [ ] 4px radius on everything interactive and structural
@@ -717,6 +747,7 @@ Font: Syne, weight 600.
 - [ ] Uppercase + letter-spacing on all Syne labels and buttons
 
 ### Review Phase
+
 - [ ] No pure white page background
 - [ ] No black or dark-fill table headers
 - [ ] No hard-edge shadows
@@ -729,6 +760,7 @@ Font: Syne, weight 600.
 ## 17. Component Pattern Library
 
 ### Pattern 1: Page Header
+
 ```
 [Syne eyebrow — 10px, uppercase, tracking 0.20em, muted]
          ↕ 12px
@@ -740,6 +772,7 @@ Font: Syne, weight 600.
 ```
 
 ### Pattern 2: Content Section
+
 ```
 [Section label — Syne, uppercase, border-bottom 1px #e8e0d5]
          ↕ 20px
@@ -749,15 +782,18 @@ Font: Syne, weight 600.
 ```
 
 ### Pattern 3: Editorial Badge Row
+
 ```
 <span class="badge badge-success">Published</span>
 <span class="badge badge-warning">Draft</span>
 <span class="badge badge-error">Archived</span>
 <span class="badge badge-info">Review</span>
 ```
+
 Syne, 11px, uppercase, 4px radius.
 
 ### Pattern 4: Navigation
+
 ```
 [Nav — bg #faf7f2, border-bottom 1px #e8e0d5, 56px]
 [Logo — Cormorant or Syne brand mark]
@@ -766,6 +802,7 @@ Syne, 11px, uppercase, 4px radius.
 ```
 
 ### Pattern 5: Pull Quote
+
 ```
 [Cormorant Garamond, italic, 24–28px, weight 400]
 [Color: #5e4a3e or #2c1810]
@@ -779,17 +816,20 @@ Syne, 11px, uppercase, 4px radius.
 ### 18.1 Breakpoint Behavior
 
 **Below 480px:**
+
 - Modal padding: 32px → 20px
 - Card padding: 24px → 16px
 - Cormorant hero title: reduce 2 sizes
 - Nav: hamburger menu
 
 **480px–767px:**
+
 - Modal max-width: fills with 16px margin
 - 2-column → 1-column
 - Button group: stacked
 
 **768px+:**
+
 - Full system as designed
 
 ---
@@ -911,7 +951,7 @@ The `useTheme()` hook (`src/hooks/useTheme.ts`) manages three modes:
 | `'light'` | Forces light regardless of system |
 | `'dark'` | Forces dark regardless of system |
 
-Persisted in `localStorage` under key `internalx-theme`.
+Persisted in `localStorage` under key `AutoX-theme`.
 
 ---
 

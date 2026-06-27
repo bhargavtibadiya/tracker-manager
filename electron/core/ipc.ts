@@ -160,7 +160,7 @@ export function registerIpcHandlers(getWindow: () => BrowserWindow | null): void
     const win = getWindow()
     const saveOptions = {
       title: 'Export Activity Log',
-      defaultPath: 'internalx-activity.log',
+      defaultPath: 'AutoX-activity.log',
       filters: LOG_FILE_FILTERS,
     }
     const result = win

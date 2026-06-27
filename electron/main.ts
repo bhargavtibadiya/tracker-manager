@@ -22,10 +22,10 @@ const __dirname = path.dirname(fileURLToPath(import.meta.url))
 const APP_WIDTH = 425
 const APP_MIN_WIDTH = 425
 const APP_MAX_WIDTH = 425
-const APP_HEIGHT =  840
+const APP_HEIGHT = 840
 const APP_MIN_HEIGHT = 840
 const APP_MAX_HEIGHT = 840
-const WINDOWS_APP_USER_MODEL_ID = 'com.internalx.app'
+const WINDOWS_APP_USER_MODEL_ID = 'com.AutoX.app'
 
 const BACKGROUND_NOTIFICATION_TITLE = APP_NAME
 const BACKGROUND_NOTIFICATION_BODY_WIN =
@@ -207,7 +207,7 @@ if (process.platform === 'darwin') {
 }
 
 // ── Single-instance lock ──────────────────────────────────────────────────────
-// Only one InternalX instance may run at a time. If a second instance is
+// Only one AutoX instance may run at a time. If a second instance is
 // launched, that new process exits immediately (app.quit()) and the OS routes a
 // `second-instance` event to the already-running process, which then reveals and
 // focuses the existing window (even if it was hidden to the tray or minimized).

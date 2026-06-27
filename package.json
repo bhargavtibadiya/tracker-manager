@@ -1,6 +1,6 @@
 {
   "name": "automation-control",
-  "productName": "InternalX",
+  "productName": "AutoX",
   "version": "1.0.13",
   "description": "Automation Control Application",
   "main": "dist-electron/main.js",
@@ -47,9 +47,9 @@
     "vitest": "^4.1.9"
   },
   "build": {
-    "appId": "com.internalx.app",
-    "productName": "InternalX",
-    "copyright": "Copyright © InternalX",
+    "appId": "com.AutoX.app",
+    "productName": "AutoX",
+    "copyright": "Copyright © AutoX",
     "afterPack": "./electron/afterpack.cjs",
     "directories": {
       "output": "release",
@@ -112,7 +112,7 @@
       "installerIcon": "resources/icon.ico",
       "uninstallerIcon": "resources/icon.ico",
       "installerHeaderIcon": "resources/icon.ico",
-      "shortcutName": "InternalX"
+      "shortcutName": "AutoX"
     },
     "mac": {
       "target": [
@@ -123,7 +123,7 @@
       "artifactName": "${productName}-${version}.${ext}"
     },
     "dmg": {
-      "title": "InternalX ${version}"
+      "title": "AutoX ${version}"
     }
   }
 }
