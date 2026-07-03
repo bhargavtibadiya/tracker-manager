@@ -17,7 +17,7 @@ Platform notes
 import random
 import sys
 import time
-from typing import Callable, List
+from typing import Callable, List, Tuple
 
 # ── macOS: suppress Dock icon BEFORE pyautogui import ────────────────────────
 # pyautogui on macOS triggers creation of an NSApplication instance via
@@ -67,18 +67,29 @@ _IS_MACOS:   bool = sys.platform == 'darwin'
 _IS_WINDOWS: bool = sys.platform == 'win32'
 
 
+# Tab press count weights for 1–7 (favour 2–4, allow wider spread).
+_CTRL_TAB_COUNT_WEIGHTS: List[int] = [1, 3, 4, 4, 3, 2, 1]
+
+
 # ── Individual actions ────────────────────────────────────────────────────────
 
+def action_shift_tap() -> None:
+    """Press and release Shift only — harmless modifier noise."""
+    pyautogui.press('shift')
+
+
+def action_ctrl_tap() -> None:
+    """Press and release Ctrl only — no Tab, no side effects in most apps."""
+    pyautogui.press('ctrl')
+
+
 def action_ctrl_tab_multi() -> None:
-    """Hold Ctrl and press Tab 1–5 times to cycle through multiple tabs/files.
+    """Hold Ctrl and press Tab 1–7 times to cycle through tabs/files.
 
-    Pressing Tab multiple times with Ctrl held advances through several
-    open tabs or editor files in one action — avoiding the back-and-forth
-    between only two files that a single Ctrl+Tab produces.
-
+    Count is weighted toward 2–4 tabs with occasional 1 or 5–7 jumps.
     Works on both Windows and macOS (Chrome, Firefox, Cursor, VS Code).
     """
-    count = random.randint(1, 5)
+    count = random.choices(range(1, 8), weights=_CTRL_TAB_COUNT_WEIGHTS, k=1)[0]
     try:
         pyautogui.keyDown('ctrl')
         for i in range(count):
@@ -160,33 +171,21 @@ def action_app_switch() -> None:
         time.sleep(0.35)
 
 
-# ── Action pools ──────────────────────────────────────────────────────────────
+# ── In-app weighted actions ───────────────────────────────────────────────────
 
-#: Actions available in Basic mode — tab/file cycling only, no app switching.
-#: action_ctrl_tab_multi appears 4× to make tab cycling the dominant action.
-BASIC_POOL: List[Callable[[], None]] = [
-    action_ctrl_tab_multi,
-    action_ctrl_tab_multi,  # weighted: tab cycling is the primary activity
-    action_ctrl_tab_multi,
-    action_ctrl_tab_multi,
-    action_scroll_up,
-    action_scroll_up,       # weighted: scrolling is common
-    action_scroll_down,
-    action_scroll_down,
-    action_arrow_up,
-    action_arrow_down,
-    action_page_up,
-    action_page_down,
-    action_arrow_sequence,
-    action_arrow_sequence,  # weighted: sequences look natural
-]
-
-#: Advanced pool = everything in Basic + app switching.
-#: action_app_switch appears once so it is roughly 1-in-15 (~7 %) of actions,
-#: keeping tab/file cycling dominant and app switching occasional.
-#: Uses Alt+Tab on Windows/Linux, Cmd+Tab on macOS.
-ADVANCED_POOL: List[Callable[[], None]] = BASIC_POOL + [
-    action_app_switch,
+#: Base weights for in-app actions (sum = 100).  App switching is timer-driven
+#: in advanced mode — not part of this pool.  Weights are jittered per dwell block.
+IN_APP_WEIGHTED: List[Tuple[Callable[[], None], float]] = [
+    (action_ctrl_tab_multi, 22.0),
+    (action_scroll_up, 12.0),
+    (action_scroll_down, 12.0),
+    (action_arrow_up, 8.0),
+    (action_arrow_down, 8.0),
+    (action_page_up, 7.0),
+    (action_page_down, 7.0),
+    (action_arrow_sequence, 10.0),
+    (action_shift_tap, 8.0),
+    (action_ctrl_tap, 6.0),
 ]
 
 
@@ -221,19 +220,19 @@ def sleep_interruptible(
 
 
 def run_burst(
-    action_pool: List[Callable[[], None]],
+    weighted_actions: List[Tuple[Callable[[], None], float]],
     interval_min: float,
     interval_max: float,
     duration_s: float,
     is_running_fn: Callable[[], bool],
 ) -> None:
     """
-    Run randomly chosen actions from action_pool for approximately
-    duration_s seconds, sleeping interval_min–interval_max between each.
-
-    Exits early if is_running_fn() returns False.
+    Legacy burst runner — prefer lib.session.run_automation for mode scripts.
     """
+    from lib.session import WeightedActionPicker
+
+    picker = WeightedActionPicker(weighted_actions)
     deadline = time.monotonic() + duration_s
     while time.monotonic() < deadline and is_running_fn():
-        safe_action(random.choice(action_pool))
+        safe_action(picker.pick())
         sleep_interruptible(interval_min, interval_max, is_running_fn)
