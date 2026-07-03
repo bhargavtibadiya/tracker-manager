@@ -13,6 +13,8 @@ auto-evetns/
 │   ├── basic_mode.py
 │   ├── advanced_mode.py
 │   └── lib/
+│       ├── actions.py
+│       └── session.py
 └── electron/scripts/       ← platform helpers (.ps1 / .applescript)
 ```
 

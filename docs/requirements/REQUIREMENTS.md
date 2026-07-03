@@ -367,24 +367,26 @@ The application registers itself to launch automatically when Windows starts.
 
 ### Basic Mode — `scripts/basic_mode.py`
 
-Actions pool (randomly selected each iteration):
-- `Ctrl + Tab`
-- Scroll up (random amount 1–10 units)
-- Scroll down (random amount 1–10 units)
+In-app actions (weighted random selection with no-repeat window and per-dwell jitter):
+- `Ctrl + Tab` (1–7 tabs, weighted toward 2–4)
+- Scroll up / down (random amount 1–10 units)
 - `Arrow Up`, `Arrow Down`, `Page Up`, `Page Down`
-- Random number of up/down key presses in sequence
+- Arrow key sequences (1–5 presses, one direction)
+- Shift tap and Ctrl tap (modifier-only, no side effects)
 
-Timing: Random interval between `0.2s – 0.5s` per action.  
-Idle phases: Occasionally (random chance) pause for `15–25s` before resuming.
+Dwell: Variable **3–9 min** in-app sessions (no fixed 60 s bursts).  
+Timing: Random interval **0.2s – 2.5s** per action (slow bursts up to 6 s).  
+Idle phases: ~8% chance, pause **15–40s** before resuming.
 
 ### Advanced Mode — `scripts/advanced_mode.py`
 
-Actions pool: Everything in Basic Mode, plus:
-- `Alt + Tab`
+In-app actions: Same weighted pool as Basic.  
+Application switching: `Alt + Tab` (Windows/Linux) or `Cmd + Tab` (macOS) — triggered **only when a dwell block ends**, not from the action pool.
 
-Timing: Random interval between `0.2s – 5s` per action (wider variance than Basic).  
-Idle phases: More frequent and longer than Basic (`20–60s` idle windows).  
-Pattern: Must be genuinely unpredictable — no fixed cycles or rotation patterns.
+Dwell: Primary app **6–7.5 min** (biased, wider 3–9 min tail); secondary app **2.5–4 min** (biased, wider 2–5 min tail).  
+Timing: Random interval **0.2s – 5s** per action (slow bursts up to 7 s).  
+Idle phases: ~12% chance, pause **20–60s** before resuming.  
+Pattern: Weighted picker with 3-action no-repeat window, 5% micro-pauses, and per-dwell weight jitter — no fixed cycles.
 
 ### Script Communication
 

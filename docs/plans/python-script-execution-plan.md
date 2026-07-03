@@ -289,19 +289,22 @@ If an existing `new.py` exists elsewhere in the team’s workflow, use it **only
 
 | Item | Spec |
 |---|---|
-| Actions | Ctrl+Tab, scroll up/down (1–10), arrow keys, Page Up/Down |
-| Excluded | Alt+Tab |
-| Action interval | Random 0.2s – 0.5s |
-| Idle phases | Random 15s – 25s occasionally |
+| Actions | Ctrl+Tab (1–7 tabs), scroll up/down (1–10), arrow keys, Page Up/Down, Shift/Ctrl tap |
+| Excluded | Alt+Tab / Cmd+Tab |
+| Dwell | Variable 3–9 min in-app sessions |
+| Action interval | Random 0.2s – 2.5s (slow bursts up to 6s) |
+| Idle phases | ~8% chance, 15s – 40s |
 
 ### Advanced mode (`scripts/advanced_mode.py`)
 
 | Item | Spec |
 |---|---|
-| Actions | Everything in Basic + Alt+Tab |
-| Action interval | Random 0.2s – 5s |
-| Idle phases | Random 20s – 60s, more frequent than Basic |
-| Pattern | Genuinely random — no fixed cycles |
+| Actions | Same weighted in-app pool as Basic |
+| App switch | Alt+Tab / Cmd+Tab at dwell end only (timer-driven) |
+| Dwell | Primary 6–7.5 min / secondary 2.5–4 min (biased ranges) |
+| Action interval | Random 0.2s – 5s (slow bursts up to 7s) |
+| Idle phases | ~12% chance, 20s – 60s |
+| Pattern | Weighted picker, 3-action no-repeat, micro-pauses, per-dwell jitter |
 
 ### CLI arguments (informational; duration enforced by Electron)
 

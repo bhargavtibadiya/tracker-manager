@@ -7,6 +7,33 @@ Versioning follows [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ---
 
+## [1.0.15] — 2026-07-03
+
+**Author:** Bhargav Tibadiya
+
+### Changed
+
+- **Automation randomization overhaul**
+  - New `scripts/lib/session.py` — dwell-timer state machine, weighted action
+    picker with a 3-action no-repeat window, 5% micro-pauses, and per-dwell
+    weight jitter (±15%).
+  - Added harmless modifier-only keystrokes: **Shift tap** and **Ctrl tap**.
+  - Ctrl+Tab now advances **1–7 tabs** (weighted toward 2–4); removed fixed
+    60 s burst cycles.
+  - Variable dwell sessions: Basic **3–9 min**; Advanced primary **6–7.5 min**
+    (biased) / secondary **2.5–4 min** (biased).
+  - Application switching in Advanced is **timer-driven** at dwell end — not
+    random pool picks.
+  - Replaced duplicate `BASIC_POOL` / `ADVANCED_POOL` entries with
+    `IN_APP_WEIGHTED` base weights in `scripts/lib/actions.py`.
+  - — `scripts/basic_mode.py`, `scripts/advanced_mode.py`, `scripts/lib/`
+
+### Build
+
+- Version bumped to `1.0.15` in `package.json` and `src/constants/app.constants.ts`.
+
+---
+
 ## [1.0.14] — 2026-06-27
 
 **Author:** Bhargav Tibadiya

@@ -8,8 +8,8 @@ Built with **Electron**, **React**, **TypeScript**, and **Python** (`pyautogui`)
 
 ## Features
 
-- **Basic mode** — tab/file cycling (`Ctrl+Tab`), scroll, and arrow keys (no app switching)
-- **Advanced mode** — all Basic actions plus application switching (`Alt+Tab` on Windows, `Cmd+Tab` on macOS)
+- **Basic mode** — in-app tab/file cycling (`Ctrl+Tab`), scroll, arrow keys, and harmless Shift/Ctrl taps (no app switching); variable 3–9 min dwell sessions
+- **Advanced mode** — all Basic actions plus timer-driven application switching (`Alt+Tab` on Windows, `Cmd+Tab` on macOS); primary app ~6–7.5 min, secondary ~2.5–4 min per cycle
 - **Stop timer** — run for a set duration or indefinitely until manually stopped
 - **Post-stop options**
   - Close Upwork Desktop App (graceful close → force kill)
@@ -117,7 +117,9 @@ AutoX-Auto/
 ├── scripts/               # Python automation scripts
 │   ├── basic_mode.py
 │   ├── advanced_mode.py
-│   └── lib/               # Shared actions and signal handling
+│   └── lib/               # Shared actions, session orchestration, signals
+│       ├── actions.py
+│       └── session.py
 ├── resources/             # App icons (generated from public/app-icon.svg)
 ├── public/                # Static assets
 ├── docs/                  # Requirements, dev guides, test plans
@@ -131,8 +133,8 @@ AutoX-Auto/
 
 ### Windows
 
-- Application switching uses `Alt+Tab` (switches to the last-used app only)
-- Tab/file cycling holds `Ctrl` and presses `Tab` 1–5 times per action
+- Application switching uses `Alt+Tab` (switches to the last-used app only); triggered by dwell timer in Advanced mode, not random action picks
+- Tab/file cycling holds `Ctrl` and presses `Tab` 1–7 times per action (weighted toward 2–4)
 - Upwork is closed via PowerShell / `taskkill`
 - Shutdown uses `shutdown /s /t 0`
 
