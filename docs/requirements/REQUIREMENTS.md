@@ -359,11 +359,12 @@ The application registers itself to launch automatically when Windows starts.
 ## 6. Python Automation Scripts
 
 ### Shared Behavior (Both Modes)
-- The script runs in an infinite loop until terminated externally by Electron.
+- The script runs in an infinite loop until terminated externally by Electron,
+  double-Escape, or SIGTERM/taskkill.
 - The script must respond to `SIGTERM` (or `taskkill` on Windows) and exit cleanly.
 - No hardcoded stop logic inside the script (duration/timer is managed by the Electron side).
 - `pyautogui.FAILSAFE = False` must be set.
-- Required packages: `pyautogui`, `keyboard`
+- Required packages: `pyautogui`, `pynput`
 
 ### Basic Mode — `scripts/basic_mode.py`
 
@@ -376,7 +377,8 @@ In-app actions (weighted random selection with no-repeat window and per-dwell ji
 
 Dwell: Variable **3–9 min** in-app sessions (no fixed 60 s bursts).  
 Timing: Random interval **0.2s – 2.5s** per action (slow bursts up to 6 s).  
-Idle phases: ~8% chance, pause **15–40s** before resuming.
+Idle phases: ~8% chance, pause **15–40s** before resuming.  
+Stop: Press **Escape twice within 1.5 s**, or use the app Stop button.
 
 ### Advanced Mode — `scripts/advanced_mode.py`
 
@@ -386,7 +388,8 @@ Application switching: `Alt + Tab` (Windows/Linux) or `Cmd + Tab` (macOS) — tr
 Dwell: Primary app **6–7.5 min** (biased, wider 3–9 min tail); secondary app **2.5–4 min** (biased, wider 2–5 min tail).  
 Timing: Random interval **0.2s – 5s** per action (slow bursts up to 7 s).  
 Idle phases: ~12% chance, pause **20–60s** before resuming.  
-Pattern: Weighted picker with 3-action no-repeat window, 5% micro-pauses, and per-dwell weight jitter — no fixed cycles.
+Pattern: Weighted picker with 3-action no-repeat window, 5% micro-pauses, and per-dwell weight jitter — no fixed cycles.  
+Stop: Press **Escape twice within 1.5 s**, or use the app Stop button.
 
 ### Script Communication
 

@@ -282,7 +282,7 @@ If an existing `new.py` exists elsewhere in the team’s workflow, use it **only
 - Respond to **SIGTERM** (and Windows console break where applicable) and exit cleanly.
 - **No** internal duration/timer stop logic.
 - `pyautogui.FAILSAFE = False`.
-- Dependencies: `pyautogui`, `keyboard`.
+- Dependencies: `pyautogui`, `pynput`.
 - No ESC-based self-stop (Electron manages stop).
 
 ### Basic mode (`scripts/basic_mode.py`)

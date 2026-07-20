@@ -7,6 +7,30 @@ Versioning follows [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ---
 
+## [1.0.16] — 2026-07-20
+
+**Author:** Bhargav Tibadiya
+
+### Added
+
+- **Double-Escape stop**
+  - Press **Escape twice within 1.5 s** (Windows/macOS) to stop automation
+    without opening the app — same post-stop flow as the Stop button.
+  - New `scripts/lib/escape_stop.py` global listener via `pynput`.
+  - Activity log records `STOPPED (double-escape)` when triggered.
+  - — `scripts/lib/signals.py`, `electron/core/automation.ts`, `electron/core/ipc.ts`,
+    `src/App.tsx`
+
+### Changed
+
+- Added `pynput>=1.7.6` to `scripts/requirements.txt` (installed via prerequisites).
+
+### Build
+
+- Version bumped to `1.0.16` in `package.json` and `src/constants/app.constants.ts`.
+
+---
+
 ## [1.0.15] — 2026-07-03
 
 **Author:** Bhargav Tibadiya

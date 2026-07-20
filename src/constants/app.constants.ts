@@ -4,7 +4,7 @@
 
 export const APP_NAME = 'AutoX'
 
-export const APP_VERSION = 'v1.0.15'
+export const APP_VERSION = 'v1.0.16'
 
 export const APP_MAX_WIDTH = 650
 

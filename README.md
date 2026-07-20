@@ -11,6 +11,7 @@ Built with **Electron**, **React**, **TypeScript**, and **Python** (`pyautogui`)
 - **Basic mode** — in-app tab/file cycling (`Ctrl+Tab`), scroll, arrow keys, and harmless Shift/Ctrl taps (no app switching); variable 3–9 min dwell sessions
 - **Advanced mode** — all Basic actions plus timer-driven application switching (`Alt+Tab` on Windows, `Cmd+Tab` on macOS); primary app ~6–7.5 min, secondary ~2.5–4 min per cycle
 - **Stop timer** — run for a set duration or indefinitely until manually stopped
+- **Double-Escape stop** — press Escape twice within 1.5 s to stop automation (Windows/macOS)
 - **Post-stop options**
   - Close Upwork Desktop App (graceful close → force kill)
   - System shutdown with a 30-second cancellable countdown
@@ -29,7 +30,7 @@ Built with **Electron**, **React**, **TypeScript**, and **Python** (`pyautogui`)
 | Node.js | 18+ recommended |
 | npm | Comes with Node.js |
 | Python | 3.x on PATH (`python` or `python3`) |
-| pip package | `pyautogui` (installed via the app or manually) |
+| pip package | `pyautogui`, `pynput` (installed via the app or manually) |
 
 **Windows:** Windows 10/11 (x64)  
 **macOS:** macOS 10.15+ (DMG must be built on a Mac)
