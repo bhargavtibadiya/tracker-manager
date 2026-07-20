@@ -4,6 +4,7 @@ AutoX — Advanced Automation Mode
 Simulates full desktop activity including timer-driven application switching
 (Alt+Tab on Windows/Linux, Cmd+Tab on macOS) plus all in-app actions.
 
+Stop     : Press Escape twice within 1.5 s, or use the app Stop button
 Dwell    : primary 3–9 min (biased 6–7.5 min), secondary 2–5 min (biased 2.5–4 min)
 Interval : 0.2 s – 5.0 s per action
 Idle     : 20 s – 60 s  (≈ 12 % of loop iterations)

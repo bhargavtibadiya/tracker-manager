@@ -15,7 +15,7 @@ interface StartPayload {
 }
 
 interface StopPayload {
-  reason: 'manual' | 'timer'
+  reason: 'manual' | 'timer' | 'escape'
   elapsedSeconds: number
 }
 

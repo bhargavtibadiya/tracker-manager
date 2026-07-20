@@ -18,12 +18,14 @@ import type { AutomationStatus, StartPayload } from './types.js'
 
 export type StatusCallback = (status: AutomationStatus, errorMessage?: string) => void
 export type LogCallback = (entry: string) => void
+export type EscapeStopCallback = () => void
 
 // ============================================================================
 // CONSTANTS
 // ============================================================================
 
 const FORCE_KILL_DELAY_MS = 3000
+const ESCAPE_STOP_MARKER = '[autox] stop: double-escape'
 
 // ============================================================================
 // STATE
@@ -35,6 +37,7 @@ let _intentionallyStopped = false
 
 let _onStatus: StatusCallback | null = null
 let _onLog: LogCallback | null = null
+let _onEscapeStop: EscapeStopCallback | null = null
 
 // ============================================================================
 // UTILITY FUNCTIONS
@@ -83,6 +86,10 @@ function clearForceKillTimer(): void {
 
 export function isRunning(): boolean {
   return child !== null
+}
+
+export function setEscapeStopHandler(handler: EscapeStopCallback | null): void {
+  _onEscapeStop = handler
 }
 
 export function startAutomation(
@@ -177,6 +184,12 @@ export function startAutomation(
       const entry = `SCRIPT — ${line}`
       writeLog(entry)
       onLog(entry)
+
+      if (line.includes(ESCAPE_STOP_MARKER)) {
+        devLog('INFO', 'Double-escape stop detected from Python script')
+        _intentionallyStopped = true
+        _onEscapeStop?.()
+      }
     }
   })
 

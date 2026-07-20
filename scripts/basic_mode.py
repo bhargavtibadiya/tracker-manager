@@ -4,6 +4,7 @@ AutoX — Basic Automation Mode
 Simulates in-app browser/editor activity: tab cycling, scroll, arrows,
 harmless Shift/Ctrl taps.  No application switching.
 
+Stop     : Press Escape twice within 1.5 s, or use the app Stop button
 Dwell    : 3 - 9 min variable in-app sessions (no fixed 60 s bursts)
 Interval : 0.2 s - 2.5 s per action (wider than before)
 Idle     : 15 s - 40 s  (≈ 8 % of loop iterations)

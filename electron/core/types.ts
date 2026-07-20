@@ -10,7 +10,7 @@
 
 export type AutomationMode = 'basic' | 'advanced'
 export type AutomationStatus = 'running' | 'stopped' | 'error'
-export type StopReason = 'manual' | 'timer'
+export type StopReason = 'manual' | 'timer' | 'escape'
 
 export interface StartPayload {
   mode: AutomationMode
@@ -54,6 +54,10 @@ export interface PrerequisitesCheckResult {
 export interface PrerequisitesInstallResult {
   success: boolean
   error?: string
+}
+
+export interface TrayStopPayload {
+  reason?: StopReason
 }
 
 export interface TrayTimerPayload {

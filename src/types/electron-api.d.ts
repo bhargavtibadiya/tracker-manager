@@ -11,7 +11,7 @@ interface AutomationStartPayload {
 }
 
 interface AutomationStopPayload {
-  reason: 'manual' | 'timer'
+  reason: 'manual' | 'timer' | 'escape'
   elapsedSeconds: number
 }
 
@@ -78,7 +78,7 @@ interface ElectronAPI {
   }
   tray: {
     onRequestStart: (cb: () => void) => Unsubscribe
-    onRequestStop: (cb: () => void) => Unsubscribe
+    onRequestStop: (cb: (payload?: { reason?: 'manual' | 'timer' | 'escape' }) => void) => Unsubscribe
     onRequestStartPreset: (cb: (payload: { hours: number }) => void) => Unsubscribe
     onSetScreenLock: (cb: (payload: { value: boolean }) => void) => Unsubscribe
     onSetShutdown: (cb: (payload: { value: boolean }) => void) => Unsubscribe

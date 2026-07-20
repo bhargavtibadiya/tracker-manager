@@ -350,12 +350,12 @@ const App = () => {
     beginCountdown()
   }, [beginCountdown])
 
-  const handleStopClick = useCallback(() => {
+  const handleStopClick = useCallback((reason: 'manual' | 'timer' | 'escape' = 'manual') => {
     if (!isActive) return
 
     // Only send IPC stop if Python was actually started
     if (isRunning) {
-      automationStop({ reason: 'manual', elapsedSeconds })
+      automationStop({ reason, elapsedSeconds })
     }
 
     playStartEnd()
@@ -530,8 +530,8 @@ const App = () => {
     const unsubStart = window.electronAPI.tray.onRequestStart(() => {
       handleStartClickRef.current()
     })
-    const unsubStop = window.electronAPI.tray.onRequestStop(() => {
-      handleStopClickRef.current()
+    const unsubStop = window.electronAPI.tray.onRequestStop((payload) => {
+      handleStopClickRef.current(payload?.reason ?? 'manual')
     })
     const unsubPreset = window.electronAPI.tray.onRequestStartPreset(({ hours }) => {
       handleStartPresetRef.current(hours)
@@ -814,7 +814,7 @@ const App = () => {
                     size="sm"
                     fullWidth
                     className="w-full"
-                    onClick={handleStopClick}
+                    onClick={() => handleStopClick()}
                     disabled={!isActive}
                   >
                     Stop

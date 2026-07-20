@@ -5,14 +5,14 @@
 import { dialog, ipcMain } from 'electron'
 import type { BrowserWindow } from 'electron'
 import fs from 'fs'
-import { startAutomation, stopAutomation, isRunning } from './automation.js'
+import { startAutomation, stopAutomation, isRunning, setEscapeStopHandler } from './automation.js'
 import { devLog, getDevLogEntries, setDevLogRenderer } from './dev-logger.js'
 import { writeLog, readLog } from './logger.js'
 import { executeScreenLock, executeSystemShutdown } from './post-stop.js'
 import { checkPythonPrerequisites, installPythonPrerequisites } from './python-deps.js'
 import { updateTrayMode, updateTrayPostStopOptions, updateTrayStatus, updateTrayTimer } from './tray.js'
 import { IPC_CHANNELS } from './types.js'
-import type { StartPayload, StopPayload, AutomationStatus, TrayTimerPayload } from './types.js'
+import type { StartPayload, StopPayload, AutomationStatus, TrayTimerPayload, TrayStopPayload, StopReason } from './types.js'
 import { formatDuration } from './utils.js'
 
 // ============================================================================
@@ -20,6 +20,17 @@ import { formatDuration } from './utils.js'
 // ============================================================================
 
 const LOG_FILE_FILTERS = [{ name: 'Log Files', extensions: ['log', 'txt'] }]
+
+function buildStopLogEntry(reason: StopReason, elapsedSeconds: number): string {
+  const durationStr = formatDuration(elapsedSeconds)
+  if (reason === 'timer') {
+    return `STOPPED (timer elapsed) — Ran for: ${durationStr}`
+  }
+  if (reason === 'escape') {
+    return `STOPPED (double-escape) — Ran for: ${durationStr}`
+  }
+  return `STOPPED (manual) — Ran for: ${durationStr}`
+}
 
 // ============================================================================
 // STATE
@@ -55,6 +66,10 @@ function buildSender(getWindow: () => BrowserWindow | null) {
  * Call once from electron/main.ts after app.whenReady().
  */
 export function registerIpcHandlers(getWindow: () => BrowserWindow | null): void {
+
+  setEscapeStopHandler(() => {
+    getWindow()?.webContents.send(IPC_CHANNELS.TRAY_REQUEST_STOP, { reason: 'escape' } satisfies TrayStopPayload)
+  })
 
   // ── Wire dev-logger renderer pusher ──────────────────────────────────────
   // Uses a lazy closure so it always uses the current window reference.
@@ -103,20 +118,16 @@ export function registerIpcHandlers(getWindow: () => BrowserWindow | null): void
 
   // ── automation:stop ───────────────────────────────────────────────────────
   ipcMain.on(IPC_CHANNELS.AUTOMATION_STOP, (_event, payload: StopPayload) => {
-    if (!isRunning()) return
-
     const send = buildSender(getWindow)
     const { reason = 'manual', elapsedSeconds = 0 } = payload ?? {}
 
     devLog('INFO', `IPC: AUTOMATION_STOP — reason: ${reason}, elapsed: ${elapsedSeconds}s`)
-    stopAutomation()
 
-    // Write the stop log entry (duration is known by the renderer which tracks elapsed time)
-    const durationStr = formatDuration(elapsedSeconds)
-    const stopEntry =
-      reason === 'timer'
-        ? `STOPPED (timer elapsed) — Ran for: ${durationStr}`
-        : `STOPPED (manual) — Ran for: ${durationStr}`
+    if (isRunning()) {
+      stopAutomation()
+    }
+
+    const stopEntry = buildStopLogEntry(reason, elapsedSeconds)
 
     writeLog(stopEntry)
     send.logEntry(stopEntry)

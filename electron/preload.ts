@@ -6,7 +6,7 @@ import { contextBridge, ipcRenderer } from 'electron'
 import type { IpcRendererEvent } from 'electron'
 import { resolveSoundUrls } from './core/sound-paths.js'
 import { IPC_CHANNELS } from './core/types.js'
-import type { StartPayload, StopPayload, StatusPayload, ErrorPayload, LogEntryPayload, PrerequisitesCheckResult, PrerequisitesInstallResult } from './core/types.js'
+import type { StartPayload, StopPayload, StatusPayload, ErrorPayload, LogEntryPayload, PrerequisitesCheckResult, PrerequisitesInstallResult, TrayStopPayload } from './core/types.js'
 
 // ============================================================================
 // TYPE DEFINITIONS
@@ -117,8 +117,8 @@ contextBridge.exposeInMainWorld('electronAPI', {
     onRequestStart: (cb: () => void): Unsubscribe => {
       return onVoid(IPC_CHANNELS.TRAY_REQUEST_START, cb)
     },
-    onRequestStop: (cb: () => void): Unsubscribe => {
-      return onVoid(IPC_CHANNELS.TRAY_REQUEST_STOP, cb)
+    onRequestStop: (cb: (payload?: TrayStopPayload) => void): Unsubscribe => {
+      return on<TrayStopPayload>(IPC_CHANNELS.TRAY_REQUEST_STOP, cb)
     },
     /** Main asks renderer to start with a specific hour preset. */
     onRequestStartPreset: (cb: (payload: { hours: number }) => void): Unsubscribe => {
